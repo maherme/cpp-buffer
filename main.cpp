@@ -62,6 +62,9 @@ int main(){
                 if(pqData.empty() == false){
                     std::cout << pqData.top().value << std::endl;
                 }
+                else{
+                    std::cout << "Error: buffer is empty" << std::endl;
+                }
                 break;
             case c_remove:
                 break;
