@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/cpp-buffer.dir/main.cpp.o -o cpp-buffer 
