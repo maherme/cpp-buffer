@@ -32,17 +32,20 @@ enum CommandValues{
 
 /* Map to associate the strings with the enum values */
 static std::map<std::string, CommandValues>s_mapCommandValues;
+/* Declare a priority_queue and specify the order as < */
+/* The priorities will be assigned in the ascending order of priority */
+static std::priority_queue<Data, std::vector<Data>, std::less<std::vector<Data>::value_type> > pqData;
 
 static void InitCommands(void);
 static int CheckCommand(std::string, Data&);
+static void Print(void);
+static void Get(void);
+static void Remove(void);
 
 int main(){
 
     bool loop_cond = true;
     std::string command;
-    /* Declare a priority_queue and specify the order as < */
-    /* The priorities will be assigned in the ascending order of priority */
-    std::priority_queue<Data, std::vector<Data>, std::less<std::vector<Data>::value_type> > pqData;
     Data ins_data;
 
     InitCommands();
@@ -57,23 +60,13 @@ int main(){
                 exit(EXIT_SUCCESS);
                 break;
             case c_print:
+                Print();
                 break;
             case c_get:
-                if(pqData.empty() == false){
-                    std::cout << pqData.top().value << std::endl;
-                }
-                else{
-                    std::cout << "Error: buffer is empty" << std::endl;
-                }
+                Get();
                 break;
             case c_remove:
-                if(pqData.empty() == false){
-                    std::cout << pqData.top().value << " will be removed" << std::endl;
-                    pqData.pop();
-                }
-                else{
-                    std::cout << "Error: buffer is empty" << std::endl;
-                }
+                Remove();
                 break;
             default:
                 if(CheckCommand(command, ins_data) == 0){
@@ -137,4 +130,65 @@ static int CheckCommand(std::string str, Data& i_data){
     i_data.priority = priority_i;
 
     return 0;
+}
+
+/* Function to print buffer to STDOUT.
+ *
+ */
+static void Print(void){
+
+    int i = 0;
+    int data_size = 0;
+    Data *data_array;
+
+    data_size = pqData.size();
+
+    if(data_size != 0){
+        data_array = new Data[data_size];
+        if(data_array == 0x0){
+            std::cout << "Error: insufficient memory for execute print" << std::endl;
+            return;
+        }
+        else{
+            for(i = 0; i < data_size; i++){
+                data_array[i] = pqData.top();
+                pqData.pop();
+                std::cout << data_array[i].value << std::endl;
+            }
+            for(i = 0; i < data_size; i++){
+                pqData.push(data_array[i]);
+            }
+            delete [] data_array;
+        }
+    }
+    else{
+        std::cout << "Error: buffer is empty" << std::endl;
+    }
+}
+
+/* Function to print the first element of the buffer to STDOUT.
+ *
+ */
+static void Get(void){
+
+    if(pqData.empty() == false){
+        std::cout << pqData.top().value << std::endl;
+    }
+    else{
+        std::cout << "Error: buffer is empty" << std::endl;
+    }
+}
+
+/* Function to remove the first element of the buffer.
+ *
+ */
+static void Remove(void){
+
+    if(pqData.empty() == false){
+        std::cout << pqData.top().value << " will be removed" << std::endl;
+        pqData.pop();
+    }
+    else{
+        std::cout << "Error: buffer is empty" << std::endl;
+    }
 }
