@@ -67,6 +67,13 @@ int main(){
                 }
                 break;
             case c_remove:
+                if(pqData.empty() == false){
+                    std::cout << pqData.top().value << " will be removed" << std::endl;
+                    pqData.pop();
+                }
+                else{
+                    std::cout << "Error: buffer is empty" << std::endl;
+                }
                 break;
             default:
                 if(CheckCommand(command, ins_data) == 0){
