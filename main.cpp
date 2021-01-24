@@ -59,6 +59,9 @@ int main(){
             case c_print:
                 break;
             case c_get:
+                if(pqData.empty() == false){
+                    std::cout << pqData.top().value << std::endl;
+                }
                 break;
             case c_remove:
                 break;
