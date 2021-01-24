@@ -11,6 +11,8 @@ map
 -
 string
 -
+queue
+-
 stdlib.h
 -
 iostream
