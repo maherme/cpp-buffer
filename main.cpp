@@ -105,7 +105,7 @@ static int CheckCommand(std::string str, Data& i_data){
     size_t str_len;
 
     if((pos_colon = str.find_first_of(":")) == std::string::npos){
-	    std::cout << "Error in command format -> value:priority (integer:integer)" << std::endl;
+        std::cout << "Error in command format -> value:priority (integer:integer)" << std::endl;
     }
     else{
         value_s = str.substr(0, pos_colon);
@@ -113,7 +113,7 @@ static int CheckCommand(std::string str, Data& i_data){
             value_i = stoi(value_s, nullptr, 10);
         }
         catch(const std::invalid_argument){
-		std::cout << "Error in command format -> value:priority (integer:integer)" << std::endl;
+        std::cout << "Error in command format -> value:priority (integer:integer)" << std::endl;
             return -1;
         }
         priority_s = str.substr(pos_colon+1, str.length());
@@ -121,7 +121,7 @@ static int CheckCommand(std::string str, Data& i_data){
             priority_i = stoi(priority_s, nullptr, 10);
         }
         catch(const std::invalid_argument){
-		std::cout << "Error in command format -> value:priority (integer:integer)" << std::endl;
+            std::cout << "Error in command format -> value:priority (integer:integer)" << std::endl;
             return -1;
         }
     }
