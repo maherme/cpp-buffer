@@ -3,7 +3,6 @@
 #include <queue>
 #include <stdlib.h>
 #include <iostream>
-//using namespace std;
 
 /* Define a custom data type to store value:priority */
 class Data{
