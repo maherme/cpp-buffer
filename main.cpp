@@ -166,28 +166,19 @@ static int CheckCommand(std::string str, Data& i_data){
  */
 static void Print(void){
 
-    int i = 0;
-    int data_size = 0;
-    Data *data_array;
+    static std::priority_queue<Data, std::vector<Data>, std::less<std::vector<Data>::value_type> > pqTemp;
 
-    data_size = pqData.size();
-
-    if(data_size != 0){
-        data_array = new Data[data_size];
-        if(data_array == 0x0){
-            std::cout << "Error: insufficient memory for execute print" << std::endl;
-            return;
+    if(pqData.empty() != true){
+        while(pqData.empty() != true){
+            pqTemp.push(pqData.top());
+            std::cout << pqData.top().value << std::endl;
+            pqData.pop();
         }
-        else{
-            for(i = 0; i < data_size; i++){
-                data_array[i] = pqData.top();
-                pqData.pop();
-                std::cout << data_array[i].value << std::endl;
-            }
-            for(i = 0; i < data_size; i++){
-                pqData.push(data_array[i]);
-            }
-            delete [] data_array;
+
+        pqData = pqTemp;
+
+        while(pqTemp.empty() != true){
+            pqTemp.pop();
         }
     }
     else{
