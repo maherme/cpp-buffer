@@ -9,16 +9,43 @@ class Data{
     public:
     int value;
     int priority;
-    Data():value(0), priority(0){}
-    Data(int new_value, int new_priority):value(new_value), priority(new_priority){}
+    long number;
+    Data():value(0), priority(0), number(0){}
+    Data(int new_value, int new_priority, long new_number):value(new_value), priority(new_priority), number(new_number){}
 };
 
-/* Overload the < operator */
-bool operator< (const Data &Data1, const Data &Data2){return Data1.priority > Data2.priority;}
-/* Overload the > operator */
-bool operator> (const Data &Data1, const Data &Data2){return Data1.priority < Data2.priority;}
-/* Overload the == operator */
-bool operator== (const Data &Data1, const Data &Data2){return Data1.priority == Data2.priority;}
+/* Overload the < operator for storing values in priority
+ * descending order (1 has n higher priority than 2).
+ */
+bool operator< (const Data &Data1, const Data &Data2){
+
+    bool ret = false;
+
+    if(Data1.priority == Data2.priority){
+        ret = (Data1.number > Data2.number);
+    }
+    else{
+        ret = (Data1.priority > Data2.priority);
+    }
+
+    return ret;
+}
+
+/* Overload the > operator for storing values in priority
+ * ascending order (2 has n higher priority than 1).
+ */
+bool operator> (const Data &Data1, const Data &Data2){
+
+    bool ret = false;
+    if(Data1.priority == Data2.priority){
+        ret = (Data1.number > Data2.number);
+    }
+    else{
+        ret = (Data1.priority < Data2.priority);
+    }
+
+    return ret;
+}
 
 /* Value definitions of the different values */
 enum CommandValues{
@@ -102,6 +129,7 @@ static int CheckCommand(std::string str, Data& i_data){
     int value_i, priority_i = 0;
     size_t pos_colon;
     size_t str_len;
+    static long count = 0;
 
     if((pos_colon = str.find_first_of(":")) == std::string::npos){
         std::cout << "Error in command format -> value:priority (integer:integer)" << std::endl;
@@ -123,10 +151,12 @@ static int CheckCommand(std::string str, Data& i_data){
             std::cout << "Error in command format -> value:priority (integer:integer)" << std::endl;
             return -1;
         }
-    }
 
-    i_data.value = value_i;
-    i_data.priority = priority_i;
+        i_data.value = value_i;
+        i_data.priority = priority_i;
+        i_data.number = count;
+        count++;
+    }
 
     return 0;
 }
