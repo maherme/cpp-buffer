@@ -28,17 +28,17 @@ remove
 This repository contains the code to implement the functionality described above and also some unitary tests.
 The repository is organized as follow:
   
-|── main.cpp
-├── modules
-│   ├── Data
-│   │   ├── CMakeLists.txt
-│   │   ├── Data.cpp
-│   │   ├── Data.h
-│   └── functions
-│       ├── CMakeLists.txt
-│       ├── functions.cpp
-│       └── functions.h
-└── test.cpp
+- main.cpp
+- modules
+  - Data
+    - CMakeLists.txt
+    - Data.cpp
+    - Data.h
+  - functions
+    - CMakeLists.txt
+    - functions.cpp
+    - functions.h
+- test.cpp
 
 When repository is cloned you should execute the following commands:
 $cmake -H. -Bbuild (this command will configure the test environment (googletest) and it will create the build folder where the executable files will be placed).
