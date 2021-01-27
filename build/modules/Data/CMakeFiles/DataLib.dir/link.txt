@@ -1,2 +1,0 @@
-/usr/bin/ar qc libDataLib.a CMakeFiles/DataLib.dir/Data.cpp.o
-/usr/bin/ranlib libDataLib.a
