@@ -29,6 +29,7 @@ This repository contains the code to implement the functionality described above
 The repository is organized as follow:
   
 - main.cpp
+- test.cpp
 - modules
   - Data
     - CMakeLists.txt
@@ -38,11 +39,13 @@ The repository is organized as follow:
     - CMakeLists.txt
     - functions.cpp
     - functions.h
-- test.cpp
+- CMakeLists.txt
+- CMakeLists.txt.in
+- config.h.in
 
 When repository is cloned you should execute the following commands:
 $cmake -H. -Bbuild (this command will configure the test environment (googletest) and it will create the build folder where the executable files will be placed).
 $cmake --build build (this command will compile 2 applications: cpp_buffer and test)
 
-cpp_buffer application implements the functionality described in 1.
-test application implements some unitary test cases coded in test.cpp file.
+- cpp_buffer application implements the functionality described in 1.
+- test application implements some unitary test cases coded in test.cpp file.
