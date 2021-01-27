@@ -98,6 +98,8 @@ cpp__buffer_EXTERNAL_OBJECTS =
 
 cpp-buffer: CMakeFiles/cpp-buffer.dir/main.cpp.o
 cpp-buffer: CMakeFiles/cpp-buffer.dir/build.make
+cpp-buffer: modules/functions/libFunctionsLib.a
+cpp-buffer: modules/Data/libDataLib.a
 cpp-buffer: CMakeFiles/cpp-buffer.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/maherme/Projects/cpp_buffer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable cpp-buffer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/cpp-buffer.dir/link.txt --verbose=$(VERBOSE)

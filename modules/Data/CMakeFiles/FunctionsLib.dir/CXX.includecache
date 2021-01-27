@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/maherme/Projects/cpp_buffer_test/modules/Data/Data.h
+
+/home/maherme/Projects/cpp_buffer_test/modules/functions/functions.cpp
+string
+-
+queue
+-
+iostream
+-
+stdlib.h
+-
+functions.h
+/home/maherme/Projects/cpp_buffer_test/modules/functions/functions.h
+../Data/Data.h
+/home/maherme/Projects/cpp_buffer_test/modules/Data/Data.h
+
+/home/maherme/Projects/cpp_buffer_test/modules/functions/functions.h
+../Data/Data.h
+/home/maherme/Projects/cpp_buffer_test/modules/Data/Data.h
+

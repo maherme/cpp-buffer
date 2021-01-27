@@ -1,0 +1,2 @@
+#define VERSION_MAJOR @cpp_buffer_VERSION_MAJOR@
+#define VERSION_MINOR @cpp_buffer_VERSION_MINOR@

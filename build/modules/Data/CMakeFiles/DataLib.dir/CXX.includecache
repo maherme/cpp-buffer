@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/maherme/Projects/cpp_buffer/modules/Data/Data.cpp
+Data.h
+/home/maherme/Projects/cpp_buffer/modules/Data/Data.h
+
+/home/maherme/Projects/cpp_buffer/modules/Data/Data.h
+
