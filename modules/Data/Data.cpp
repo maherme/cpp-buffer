@@ -13,3 +13,15 @@ Data::Data(int new_value, int new_priority, long new_number){
     priority = new_priority;
     number = new_number;
 }
+
+/* Get method */
+int Data::getval(void) const{
+    return value;
+}
+
+/* Set method */
+void Data::setval(int new_value, int new_priority, long new_number){
+    value = new_value;
+    priority = new_priority;
+    number = new_number;
+}

@@ -59,9 +59,7 @@ int CheckCommand(std::string str, Data& i_data){
             return -1;
         }
 
-        i_data.value = value_i;
-        i_data.priority = priority_i;
-        i_data.number = count;
+        i_data.setval(value_i, priority_i, count);
         count++;
     }
 
@@ -78,7 +76,7 @@ void Print(void){
     if(pqData.empty() != true){
         while(pqData.empty() != true){
             pqTemp.push(pqData.top());
-            std::cout << pqData.top().value << std::endl;
+            std::cout << pqData.top().getval() << std::endl;
             pqData.pop();
         }
 
@@ -99,7 +97,7 @@ void Print(void){
 void Get(void){
 
     if(pqData.empty() == false){
-        std::cout << pqData.top().value << std::endl;
+        std::cout << pqData.top().getval() << std::endl;
     }
     else{
         std::cout << "Error: buffer is empty" << std::endl;
@@ -112,7 +110,7 @@ void Get(void){
 void Remove(void){
 
     if(pqData.empty() == false){
-        std::cout << pqData.top().value << " will be removed" << std::endl;
+        std::cout << pqData.top().getval() << " will be removed" << std::endl;
         pqData.pop();
     }
     else{
