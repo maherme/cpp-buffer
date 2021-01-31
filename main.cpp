@@ -27,7 +27,6 @@ int main(){
     /* The priorities will be assigned in the ascending order of priority */
     std::priority_queue<Data, std::vector<Data>, std::less<std::vector<Data>::value_type>> pqData;
 
-    bool loop_cond = true;
     std::string command;
 
     std::cout << "Priority Buffer" << std::endl;
@@ -35,7 +34,7 @@ int main(){
 
     InitCommands();
 
-    while(loop_cond == true){
+    while(true){
 
         std::cout << "Please, enter a command" << std::endl;
         std::cin >> command;
@@ -54,7 +53,7 @@ int main(){
                 Remove(pqData);
                 break;
             default:
-                CheckCommand(command, pqData);
+                (void)CheckCommand(command, pqData);
                 break;
         }
     }
