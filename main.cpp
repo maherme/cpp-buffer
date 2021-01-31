@@ -18,17 +18,17 @@ enum CommandValues{
 
 /* Map to associate the strings with the enum values */
 static std::map<std::string, CommandValues>s_mapCommandValues;
-/* Declare a priority_queue and specify the order as < */
-/* The priorities will be assigned in the ascending order of priority */
-std::priority_queue<Data, std::vector<Data>, std::less<std::vector<Data>::value_type> > pqData;
 
 static void InitCommands(void);
 
 int main(){
 
+    /* Declare a priority_queue and specify the order as < */
+    /* The priorities will be assigned in the ascending order of priority */
+    std::priority_queue<Data, std::vector<Data>, std::less<std::vector<Data>::value_type>> pqData;
+
     bool loop_cond = true;
     std::string command;
-    Data ins_data;
 
     std::cout << "Priority Buffer" << std::endl;
     std::cout << "Version: " << VERSION_MAJOR << "." << VERSION_MINOR << std::endl;
@@ -45,18 +45,16 @@ int main(){
                 exit(EXIT_SUCCESS);
                 break;
             case c_print:
-                Print();
+                Print(pqData);
                 break;
             case c_get:
-                Get();
+                Get(pqData);
                 break;
             case c_remove:
-                Remove();
+                Remove(pqData);
                 break;
             default:
-                if(CheckCommand(command, ins_data) == 0){
-                    pqData.push(ins_data);
-                }
+                CheckCommand(command, pqData);
                 break;
         }
     }

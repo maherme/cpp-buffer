@@ -5,8 +5,6 @@
 #include "functions.h"
 #include "../Data/Data.h"
 
-extern std::priority_queue<Data, std::vector<Data>, std::less<std::vector<Data>::value_type> > pqData;
-
 static bool IsNumber(const std::string& str);
 
 /* Function to capture and process the command value:priority.
@@ -17,8 +15,9 @@ static bool IsNumber(const std::string& str);
  *
  * Return: -1 if an error ocurred, 0 if completed OK.
  */
-int CheckCommand(std::string str, Data& i_data){
+int CheckCommand(std::string str, std::priority_queue<Data, std::vector<Data>, std::less<std::vector<Data>::value_type>> &pqData){
 
+    Data ins_data;
     std::string value_s, priority_s;
     int value_i, priority_i = 0;
     size_t pos_colon;
@@ -59,9 +58,11 @@ int CheckCommand(std::string str, Data& i_data){
             return -1;
         }
 
-        i_data.setval(value_i, priority_i, count);
+        ins_data.setval(value_i, priority_i, count);
         count++;
     }
+
+    pqData.push(ins_data);
 
     return 0;
 }
@@ -69,21 +70,12 @@ int CheckCommand(std::string str, Data& i_data){
 /* Function to print buffer to STDOUT.
  *
  */
-void Print(void){
-
-    static std::priority_queue<Data, std::vector<Data>, std::less<std::vector<Data>::value_type> > pqTemp;
+void Print(std::priority_queue<Data, std::vector<Data>, std::less<std::vector<Data>::value_type>> pqData){
 
     if(pqData.empty() != true){
         while(pqData.empty() != true){
-            pqTemp.push(pqData.top());
             std::cout << pqData.top().getval() << std::endl;
             pqData.pop();
-        }
-
-        pqData = pqTemp;
-
-        while(pqTemp.empty() != true){
-            pqTemp.pop();
         }
     }
     else{
@@ -94,7 +86,7 @@ void Print(void){
 /* Function to print the first element of the buffer to STDOUT.
  *
  */
-void Get(void){
+void Get(std::priority_queue<Data, std::vector<Data>, std::less<std::vector<Data>::value_type>> pqData){
 
     if(pqData.empty() == false){
         std::cout << pqData.top().getval() << std::endl;
@@ -107,7 +99,7 @@ void Get(void){
 /* Function to remove the first element of the buffer.
  *
  */
-void Remove(void){
+void Remove(std::priority_queue<Data, std::vector<Data>, std::less<std::vector<Data>::value_type>> &pqData){
 
     if(pqData.empty() == false){
         std::cout << pqData.top().getval() << " will be removed" << std::endl;
