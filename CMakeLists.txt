@@ -43,11 +43,11 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
     include_directories("${gtest_SOURCE_DIR}/include")
 endif()
 
-add_subdirectory (${PROJECT_SOURCE_DIR}/modules/functions)
 add_subdirectory (${PROJECT_SOURCE_DIR}/modules/Data)
+add_subdirectory (${PROJECT_SOURCE_DIR}/modules/PQueue)
 
 # Executable file generation
 add_executable(cpp-buffer main.cpp)
-target_link_libraries(cpp-buffer FunctionsLib DataLib)
+target_link_libraries(cpp-buffer DataLib PQueueLib)
 add_executable(test test.cpp)
-target_link_libraries(test gtest_main FunctionsLib DataLib)
+target_link_libraries(test gtest_main DataLib PQueueLib)
