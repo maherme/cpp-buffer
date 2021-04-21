@@ -6,6 +6,7 @@
 #include "config.h"
 #include "modules/functions/functions.h"
 #include "modules/Data/Data.h"
+#include "modules/PQueue/PQueue.h"
 
 /* Value definitions of the different values */
 enum CommandValues{
@@ -25,7 +26,7 @@ int main(){
 
     /* Declare a priority_queue and specify the order as < */
     /* The priorities will be assigned in the ascending order of priority */
-    std::priority_queue<Data, std::vector<Data>, std::less<std::vector<Data>::value_type>> pqData;
+    PQueue pqData;
 
     std::string command;
 
@@ -44,16 +45,16 @@ int main(){
                 exit(EXIT_SUCCESS);
                 break;
             case c_print:
-                Print(pqData);
+                pqData.print();
                 break;
             case c_get:
-                Get(pqData);
+                pqData.get();
                 break;
             case c_remove:
-                Remove(pqData);
+                pqData.remove();
                 break;
             default:
-                (void)CheckCommand(command, pqData);
+                pqData.check_command(command);
                 break;
         }
     }
@@ -61,7 +62,8 @@ int main(){
     return 0;
 }
 
-/* Function to initialize command values.
+/**
+ * @brief function to initialize command values.
  *
  */
 static void InitCommands(void){
