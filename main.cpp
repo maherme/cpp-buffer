@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <iostream>
 #include "config.h"
-#include "modules/functions/functions.h"
 #include "modules/Data/Data.h"
 #include "modules/PQueue/PQueue.h"
 

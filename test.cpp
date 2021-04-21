@@ -2,7 +2,6 @@
 #include <iostream>
 #include <queue>
 #include "gtest/gtest.h"
-#include "modules/functions/functions.h"
 #include "modules/Data/Data.h"
 #include "modules/PQueue/PQueue.h"
 
